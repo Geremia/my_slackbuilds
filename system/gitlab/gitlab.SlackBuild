@@ -23,7 +23,7 @@
 
 
 PRGNAM=${PRGNAM:-gitlab}
-VERSION=${VERSION:-8.7.5}
+VERSION=${VERSION:-8.8.3}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 
@@ -82,6 +82,7 @@ user['group'] = "gitlab"
 EOF
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
+mkdir -p $PKG/var/log/gitlab/reconfigure #required per https://gitlab.com/gitlab-org/gitlab-ce/issues/13775#note_3943883
 mkdir -p $PKG/sbin
 cd $PKG/sbin
 ln -s ../opt/gitlab/bin/gitlab-ctl gitlab-ctl
